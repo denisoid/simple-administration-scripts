@@ -1,0 +1,13 @@
+server {
+        server_name  __host__ www.__host__;
+        set $root /home/__host__/public_html/;
+        root  $root;
+
+
+        access_log  /var/log/nginx/__host__.access.log;
+
+        #default setting for host
+	#include default;
+
+}
+

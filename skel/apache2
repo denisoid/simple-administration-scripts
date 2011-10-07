@@ -1,0 +1,13 @@
+<VirtualHost *>
+	DocumentRoot /home/__host__/public_html
+
+	ServerName __host__	
+	ServerAlias www.__host__	
+
+	AssignUserId __host__	__host__	
+	
+	ErrorLog ${APACHE_LOG_DIR}/__host__.error.log
+
+	CustomLog ${APACHE_LOG_DIR}/__host__.access.log combined
+</VirtualHost>
+
