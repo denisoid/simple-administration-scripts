@@ -23,6 +23,7 @@ sed -i 's/__host__/'$SITE'/g' $NGINX_VHOST_DIR$SITE
 
 #creating mysql username and password
 MYSQLU=`echo $SITE | tr \.- __`
+MYSQLU=${MYSQLU:0:16}
 MYSQLP=`./gen_pass.sh`
 
 #sql queries for creating database and grant access
