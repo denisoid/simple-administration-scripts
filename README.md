@@ -48,9 +48,11 @@ This is simple scripts for multi-site management.
 
 
 run cron edit:
+
    sudo crontab -e
 
 adding run backup at 3:00 AM
+
    0 3 * * * /root/simple-administration-scripts/run_backup.sh
 
 
