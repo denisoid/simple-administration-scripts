@@ -41,7 +41,7 @@ do
     echo $site;
     cd "/home/"$site
  
-    if [ $DAYN == "1" ]
+    if [ $DAYN == "1" ];
     then
         tar -czf $BACKUP_SITES_FULL$site".tgz" .
     else
