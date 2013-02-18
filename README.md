@@ -27,13 +27,28 @@ This is simple scripts for multi-site management.
 ## BACKUP TOOL == 
 
 ### Installation
-1. Run cron edit:
 
-sudo crontab -e
+1. Download scripts to host:
+    sudo -i
+    cd ~
+    git clone git://github.com/denisoid/simple-administration-scripts.git
 
-2. add
+2. Create user for backups into remote host,
+    ssh remotehost
+    adduser sitesbackup
 
-0 3 * * * /root/simple-administration-scripts/run_backup.sh
+3. Make ssh login for this user, for example:
+    ssh-keygen -t rsa
+    ssh-copy-id sitesbackup@remotehost
+
+4. Create config file, just copy config.cfg.sample to config.cfg and enter password for mySQL and login for remote host
+
+
+   #run cron edit:
+   sudo crontab -e
+
+   #add 
+   0 3 * * * /root/simple-administration-scripts/run_backup.sh
 
 
 

@@ -1,0 +1,18 @@
+#/bin/bash
+
+#local directories to store backups
+BACKUP_DIR='/backup'
+BACKUP_SITES=$BACKUP_DIR'/sites/'
+BACKUP_MYSQL=$BACKUP_DIR'/mysql/'
+
+#sites parent dir
+SITES_DIR='/home'
+
+#mysql credentials
+MYSQL_USER='root'
+MYSQL_PASS='password'
+
+#remote host
+REMOTE_HOST='remotehost'
+REMOTE_USER='sitesbackup'
+REMOTE_BACKUP_DIR='~/backup'
