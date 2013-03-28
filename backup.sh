@@ -84,7 +84,7 @@ chmod -R 0600 $BACKUP_DIR
 
 echo "start rsync"
  
-rsync -avz $BACKUP_DIR $REMOTE_USER@$REMOTE_HOST:$REMOTE_BACKUP_DIR
+rsync -avz --no-p --no-g --chmod=ugo=rwX $BACKUP_DIR $REMOTE_USER@$REMOTE_HOST:$REMOTE_BACKUP_DIR
  
  
 date
