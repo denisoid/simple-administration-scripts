@@ -28,10 +28,25 @@ BACKUP_SITES_DIR_TMP=$BACKUP_SITES$YEAR"_"$WEEK"/"
  
 BACKUP_SITES_FULL=$BACKUP_SITES_DIR_TMP"00_full/"
 BACKUP_SITES_INC=$BACKUP_SITES_DIR_TMP$MONTH"_"$DAY"/"
+
+
+EXCLUDE_TAR=${EXLUDE_PATHS/:/ --exlude=}
  
 echo "start backuping..."
  
 date
+
+df -h
+
+
+if [ $DAYN == "1" ];
+then
+    find $BACKUP_SITES -type d -mtime +$LIFETIME
+# -exec rm -rf {} \;
+fi
+
+
+
  
 echo "start backup sites"
  
@@ -49,10 +64,9 @@ do
  
     if [ $DAYN == "1" ];
     then
-       tar -czf $BACKUP_SITES_FULL$site".tgz" .
+       tar -czf $BACKUP_SITES_FULL$site".tgz" . $EXCLUDE_TAR
     else
-       find ./ -mtime -1 -type f -print | tar -czf $BACKUP_SITES_INC$site".tgz" -T -
- 
+       find ./ -mtime -1 -type f -print | tar -czf $BACKUP_SITES_INC$site".tgz" -T - $EXLUDE_TAR
     fi
 done
  
@@ -69,7 +83,7 @@ test -d "$MYSQL_DIR" || mkdir -p "$MYSQL_DIR"
  
 for db in `echo "show databases;" | mysql -u$MYSQL_USER -p$MYSQL_PASS`
 do
-    if [ $db != "Database" -a $db != "information_schema" -a $db != 'mysql' ];
+    if [[ $db != "Database" -a $db != "information_schema" -a $db != 'mysql' -a $EXCLUDE_DATABASES != *$db* ]];
     then
         echo $db
         mysqldump -u$MYSQL_USER -p$MYSQL_PASS $db | gzip --best > $MYSQL_DIR$db".sql.gz"

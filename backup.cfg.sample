@@ -1,5 +1,13 @@
 #/bin/bash
 
+
+#email for notification
+EMAIL='test@example.com'
+
+#lifetime for backups in weeks
+LIFETIME=3
+
+
 #local directories to store backups
 BACKUP_DIR='/backup'
 BACKUP_SITES=$BACKUP_DIR'/sites/'
@@ -16,3 +24,8 @@ MYSQL_PASS='password'
 REMOTE_HOST='remotehost'
 REMOTE_USER='sitesbackup'
 REMOTE_BACKUP_DIR='~/backup'
+
+#excludes divided by : and : at beggiing
+EXCLUDE_PATHS=':/path1/:/path2/'
+EXCLUDE_DATABASES=':db1:db2:'
+
