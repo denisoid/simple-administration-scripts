@@ -4,8 +4,8 @@
 #email for notification
 EMAIL='test@example.com'
 
-#lifetime for backups in weeks
-LIFETIME=3
+#lifetime for backups in days
+LIFETIME=21
 
 
 #local directories to store backups
